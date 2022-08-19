@@ -39,6 +39,7 @@ public class ProduitController {
 	public ResponseEntity<List<ProduitResponseDto>> findAll() {
 		//return produitService.findAll();
 		
+		//return all product in array list
 		return new ResponseEntity<>(produitService.findAll(),HttpStatus.OK);
 	}
 	
