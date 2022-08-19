@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -25,7 +27,8 @@ public class ProduitEntity implements Serializable{
 	
 	private static final long serialVersionUID=-725040896547L;
 	
-	@Id
+	@Id()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(nullable=false)
@@ -35,14 +38,77 @@ public class ProduitEntity implements Serializable{
 	private String ref;
 	
 	@Column(nullable=false)
-    private BigDecimal prix;
+    private float prix;
 	
 	@Column(nullable=false)
-     private double quantite_stock;
+     private float quantite_stock;
 	
 	
 	@OneToMany(mappedBy = "produit",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<LigneFactureEntity> ligneFactures;
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+
+	public String getRef() {
+		return ref;
+	}
+
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
+
+
+
+
+	public float getPrix() {
+		return prix;
+	}
+
+
+	public void setPrix(float prix) {
+		this.prix = prix;
+	}
+
+
+	public float getQuantite_stock() {
+		return quantite_stock;
+	}
+
+
+	public void setQuantite_stock(float quantite_stock) {
+		this.quantite_stock = quantite_stock;
+	}
+
+
+	public List<LigneFactureEntity> getLigneFactures() {
+		return ligneFactures;
+	}
+
+
+	public void setLigneFactures(List<LigneFactureEntity> ligneFactures) {
+		this.ligneFactures = ligneFactures;
+	}
 	
 	
 	
